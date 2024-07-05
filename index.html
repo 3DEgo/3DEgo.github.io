@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>mDDPM</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto Serif" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <!-- <script src="./static/js/bulma-slider.min.js"></script> -->
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero" >
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-3 publication-title">mDDPM: Unsupervised Anomaly Detection in Medical Images Using Masked Diffusion Model
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="" target="_blank">Hasan Iqbal</a><sup>1*</sup></span>
+              <span class="author-block">
+                <a href="" target="_blank">Umar Khalid</a><sup>2*</sup>,</span>
+              <span class="author-block">
+                <a href="" target="_blank">Jing Hua</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="" target="_blank">Chen Chen</a><sup>2</sup>,
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Wayne State University</span>
+              <span class="author-block"><sup>2</sup>University of Centra Florida</span>
+            </div>
+		    
+            <div class="is-size-6 publication-authors">
+	      <span class="author-block"><sup>*</sup>Equal Contribution</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2305.19867" class="external-link button is-normal is-rounded is-dark"
+                    target="_blank">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/hasan1292/mDDPM" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/hasan1292/mDDPM#Data" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+				        </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" style="margin-top: -2em;">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+		It can be challenging to identify brain MRI anomalies using supervised deep-learning techniques due to anatomical heterogeneity and the requirement for pixel-level labeling. Unsupervised anomaly detection approaches provide an alternative solution by relying only on sample-level labels of healthy brains to generate a desired representation to identify abnormalities at the pixel level. Although, generative models are crucial for generating such anatomically consistent representations of healthy brains, accurately generating the intricate anatomy of the human brain remains a challenge. In this study, we present a method called masked-DDPM (mDPPM), which introduces masking-based regularization to reframe the generation task of diffusion models. Specifically, we introduce Masked Image Modeling (MIM) and Masked Frequency Modeling (MFM) in our self-supervised approach that enables models to learn visual representations from unlabeled data. To the best of our knowledge, this is the first attempt to apply MFM in DPPM models for medical applications. We evaluate our approach on datasets containing tumors and numerous sclerosis lesions and exhibit the superior performance of our unsupervised method as compared to the existing fully/weakly supervised baselines
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-justified">
+        <img class="center-img" src="./assets/Architecture.png" width="100%" />
+        <h5>
+		Schematic diagram of our framework. (a) During training, only healthy images are used, and no classifier guidance is required. The healthy image is passed through the Masking Block before feeding into the DDPM. The reconstruction loss is calculated between the original image and the image generated by the DDPM. Here, Masking Block plays the role of regularizer and eliminates the need for classifier guidance (b) During inference, DDPM considers the tumor in the unhealthy image as an augmented patch and eliminates it to generate a healthy image. The difference between the generated image and the given unhealthy image is then calculated to report the anomaly map. No masking mechanism is employed at inference.
+        </h5>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-justified">
+        <img class="center-img" src="./assets/ipm_fpm_cm_modules.png" width="70%"/>
+        <h5>
+          Proposed data augmentation techniques which are implemented in the Masking Block.
+        </h5>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-justified">
+        <img class="center-img" src="./assets/table.PNG" width="100%"/>
+      </div>
+    </div>
+  </section>
+	  
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-justified">
+        <img class="center-img" src="./assets/comparison.PNG" width="70%"/>
+	<h5>
+          Comparison of mDDPM with state-of-the-art technieques.
+        </h5>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{iqbal2023unsupervised,https://github.com/orgs/community/discussions/54546
+  author    = {Hasan Iqbal and Umar Khalid and Jing Hua and Chen Chen},
+  title     = {Unsupervised Anomaly Detection in Medical Images Using Masked Diffusion Model},
+  year      = {2023},
+  eprint    = {2305.198671},
+  archivePrefix={arXiv}, 
+  primaryClass={eess.IV}
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              Website template credit to <a href="https://video-p2p.github.io//">Video-P2P</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
