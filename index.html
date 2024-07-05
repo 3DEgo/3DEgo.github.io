@@ -3,7 +3,7 @@
 
 <head>
 
-  <title>mDDPM</title>
+  <title>3DEgo</title>
   <link href="https://fonts.googleapis.com/css?family=Noto Serif" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -29,18 +29,19 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-3 publication-title">mDDPM: Unsupervised Anomaly Detection in Medical Images Using Masked Diffusion Model
+            <h1 class="title is-3 publication-title">3DEgo: 3D Editing on the Go!
             </h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="" target="_blank">Hasan Iqbal</a><sup>1*</sup></span>
+                <a href="" target="_blank">Umar Khalid</a><sup>1*</sup></span>
               <span class="author-block">
-                <a href="" target="_blank">Umar Khalid</a><sup>2*</sup>,</span>
+                <a href="" target="_blank">Hasan Iqbal</a><sup>2*</sup>,</span>
               <span class="author-block">
-                <a href="" target="_blank">Jing Hua</a><sup>1</sup>,
+                <a href="" target="_blank">Azib Farooq</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="" target="_blank">Chen Chen</a><sup>2</sup>,
+                <a href="" target="_blank">Chen Chen</a><sup>1</sup>,
+              </span>
             </div>
 
             <div class="is-size-5 publication-authors">
@@ -99,7 +100,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-		It can be challenging to identify brain MRI anomalies using supervised deep-learning techniques due to anatomical heterogeneity and the requirement for pixel-level labeling. Unsupervised anomaly detection approaches provide an alternative solution by relying only on sample-level labels of healthy brains to generate a desired representation to identify abnormalities at the pixel level. Although, generative models are crucial for generating such anatomically consistent representations of healthy brains, accurately generating the intricate anatomy of the human brain remains a challenge. In this study, we present a method called masked-DDPM (mDPPM), which introduces masking-based regularization to reframe the generation task of diffusion models. Specifically, we introduce Masked Image Modeling (MIM) and Masked Frequency Modeling (MFM) in our self-supervised approach that enables models to learn visual representations from unlabeled data. To the best of our knowledge, this is the first attempt to apply MFM in DPPM models for medical applications. We evaluate our approach on datasets containing tumors and numerous sclerosis lesions and exhibit the superior performance of our unsupervised method as compared to the existing fully/weakly supervised baselines
+              We introduce <strong>3DEgo</strong> to address a novel problem of directly synthesizing photorealistic 3D scenes from monocular videos guided by textual prompts. Conventional methods construct a text-conditioned 3D scene through a three-stage process, involving pose estimation using Structure-from-Motion (SfM) libraries like COLMAP, initializing the 3D model with unedited images, and iteratively updating the dataset with edited images to achieve a 3D scene with text fidelity. Our framework streamlines the conventional multi-stage 3D editing process into a single-stage workflow by overcoming the reliance on COLMAP and eliminating the cost of model initialization. We apply a diffusion model to edit video frames prior to 3D scene creation by incorporating our designed \textit{noise blender module} for enhancing multi-view editing consistency, a step that does not require additional training or fine-tuning of T2I diffusion models.  <strong>3DEgo</strong> utilizes 3D Gaussian Splatting to create 3D scenes from the multi-view consistent edited frames, capitalizing on the inherent temporal continuity and explicit point cloud data. 3DEgo demonstrates remarkable editing precision, speed, and adaptability across a variety of video sources, as validated by extensive evaluations on six datasets, including our own prepared GS25 dataset. 
             </p>
           </div>
         </div>
@@ -110,7 +111,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body has-text-justified">
-        <img class="center-img" src="./assets/Architecture.png" width="100%" />
+        <img class="center-img" src="./assets/1.jpg" width="100%" />
         <h5>
 		Schematic diagram of our framework. (a) During training, only healthy images are used, and no classifier guidance is required. The healthy image is passed through the Masking Block before feeding into the DDPM. The reconstruction loss is calculated between the original image and the image generated by the DDPM. Here, Masking Block plays the role of regularizer and eliminates the need for classifier guidance (b) During inference, DDPM considers the tumor in the unhealthy image as an augmented patch and eliminates it to generate a healthy image. The difference between the generated image and the given unhealthy image is then calculated to report the anomaly map. No masking mechanism is employed at inference.
         </h5>
@@ -121,7 +122,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body has-text-justified">
-        <img class="center-img" src="./assets/ipm_fpm_cm_modules.png" width="70%"/>
+        <img class="center-img" src="./assets/2.jpg" width="70%"/>
         <h5>
           Proposed data augmentation techniques which are implemented in the Masking Block.
         </h5>
@@ -132,7 +133,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body has-text-justified">
-        <img class="center-img" src="./assets/table.PNG" width="100%"/>
+        <img class="center-img" src="./assets/3.0.jpg" width="100%"/>
       </div>
     </div>
   </section>
@@ -140,7 +141,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body has-text-justified">
-        <img class="center-img" src="./assets/comparison.PNG" width="70%"/>
+        <img class="center-img" src="./assets/3.1.jpg" width="70%"/>
 	<h5>
           Comparison of mDDPM with state-of-the-art technieques.
         </h5>
