@@ -1,4 +1,4 @@
-<h2 align="center"> <a href="https://github.com/umarkhalidAI/LatentEditor">3DEgo: 3D Editing on the go!3DEgo: 3D Editing on the go!3DEgo: 3D Editing on the go!</a></h2>
+<h2 align="center"> <a href="https://github.com/umarkhalidAI/LatentEditor">3DEgo: 3D Editing on the go!</a></h2>
 <h5 align="center"> If you like our project, please give us a star ⭐ on GitHub for latest update.  </h2>
 
 <h5 align="center">
