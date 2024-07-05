@@ -37,7 +37,10 @@
               <span class="author-block">
                 <a href="" target="_blank">Hasan Iqbal</a><sup>2*</sup>,</span>
               <span class="author-block">
-                <a href="" target="_blank">Azib Farooq</a><sup>1</sup>,
+                <a href="" target="_blank">Azib Farooq</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="" target="_blank">Jing Hua</a><sup>2</sup>,
               </span>
               <span class="author-block">
                 <a href="" target="_blank">Chen Chen</a><sup>1</sup>,
@@ -45,8 +48,9 @@
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Wayne State University</span>
-              <span class="author-block"><sup>2</sup>University of Centra Florida</span>
+              <span class="author-block"><sup>1</sup>University of Centra Florida</span>
+              <span class="author-block"><sup>2</sup>Wayne State University</span>
+              <span class="author-block"><sup>3</sup>Miami University</span>
             </div>
 		    
             <div class="is-size-6 publication-authors">
@@ -63,15 +67,6 @@
                       <i class="ai ai-arxiv"></i>
                     </span>
                     <span>arXiv</span>
-                  </a>
-                </span>
-                <!-- Code Link. -->
-                <span class="link-block">
-                  <a href="https://github.com/hasan1292/mDDPM" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
                   </a>
                 </span>
                 <!-- Dataset Link. -->
@@ -100,7 +95,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We introduce <strong>3DEgo</strong> to address a novel problem of directly synthesizing photorealistic 3D scenes from monocular videos guided by textual prompts. Conventional methods construct a text-conditioned 3D scene through a three-stage process, involving pose estimation using Structure-from-Motion (SfM) libraries like COLMAP, initializing the 3D model with unedited images, and iteratively updating the dataset with edited images to achieve a 3D scene with text fidelity. Our framework streamlines the conventional multi-stage 3D editing process into a single-stage workflow by overcoming the reliance on COLMAP and eliminating the cost of model initialization. We apply a diffusion model to edit video frames prior to 3D scene creation by incorporating our designed \textit{noise blender module} for enhancing multi-view editing consistency, a step that does not require additional training or fine-tuning of T2I diffusion models.  <strong>3DEgo</strong> utilizes 3D Gaussian Splatting to create 3D scenes from the multi-view consistent edited frames, capitalizing on the inherent temporal continuity and explicit point cloud data. 3DEgo demonstrates remarkable editing precision, speed, and adaptability across a variety of video sources, as validated by extensive evaluations on six datasets, including our own prepared GS25 dataset. 
+              We introduce <strong>3DEgo</strong> to address a novel problem of directly synthesizing photorealistic 3D scenes from monocular videos guided by textual prompts. Conventional methods construct a text-conditioned 3D scene through a three-stage process, involving pose estimation using Structure-from-Motion (SfM) libraries like COLMAP, initializing the 3D model with unedited images, and iteratively updating the dataset with edited images to achieve a 3D scene with text fidelity. Our framework streamlines the conventional multi-stage 3D editing process into a single-stage workflow by overcoming the reliance on COLMAP and eliminating the cost of model initialization. We apply a diffusion model to edit video frames prior to 3D scene creation by incorporating our designed <i>noise blender module</i> for enhancing multi-view editing consistency, a step that does not require additional training or fine-tuning of T2I diffusion models.  <strong>3DEgo</strong> utilizes 3D Gaussian Splatting to create 3D scenes from the multi-view consistent edited frames, capitalizing on the inherent temporal continuity and explicit point cloud data. 3DEgo demonstrates remarkable editing precision, speed, and adaptability across a variety of video sources, as validated by extensive evaluations on six datasets, including our own prepared GS25 dataset. 
             </p>
           </div>
         </div>
@@ -113,7 +108,13 @@
       <div class="hero-body has-text-justified">
         <img class="center-img" src="./assets/1.jpg" width="100%" />
         <h5>
-		Schematic diagram of our framework. (a) During training, only healthy images are used, and no classifier guidance is required. The healthy image is passed through the Masking Block before feeding into the DDPM. The reconstruction loss is calculated between the original image and the image generated by the DDPM. Here, Masking Block plays the role of regularizer and eliminates the need for classifier guidance (b) During inference, DDPM considers the tumor in the unhealthy image as an augmented patch and eliminates it to generate a healthy image. The difference between the generated image and the given unhealthy image is then calculated to report the anomaly map. No masking mechanism is employed at inference.
+          Our method, 3DEgo, streamlines the 3D
+          editing process by merging a three-stage workflow
+          into a singular, comprehensive framework. This
+          efficiency is achieved by bypassing the need for
+          COLMAP for pose initialization and avoid-
+          ing the initialization of the model with unedited
+          images, unlike other existing approaches.
         </h5>
       </div>
     </div>
@@ -124,7 +125,12 @@
       <div class="hero-body has-text-justified">
         <img class="center-img" src="./assets/2.jpg" width="70%"/>
         <h5>
-          Proposed data augmentation techniques which are implemented in the Masking Block.
+          3DEgo offers rapid, accurate, and adaptable 3D editing. It completes scene
+          creation in just 8-12 minutes, bypassing the need for original image initialization and
+          COLMAP poses. This ensures compatibility with videos from any source, including
+          casual smartphone captures like the Van 360-degree scene. The above results identify
+          three cases challenging for IN2N, where our method can convert a monocular video
+          into customized 3D scenes using a streamlined, single-stage reconstruction process
         </h5>
       </div>
     </div>
@@ -133,17 +139,33 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body has-text-justified">
-        <img class="center-img" src="./assets/3.0.jpg" width="100%"/>
+        <img class="center-img" src="./assets/3.0.jpg" width="50%"/>
+        <h5>
+          Autoregressive Editing. A pre-trained diffusion model has been en-
+          hanced for multi-conditional noise prediction, managing a set, W of the edited
+          views. At each denoising step, the model predicts w + 1 separate noises, which are
+          then unified via weighted noise blender to predict εθ (et, f, T , W ). The
+          de-noising step is repeated T times in the latent space.
+        </h5>
       </div>
     </div>
   </section>
-	  
+
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body has-text-justified">
-        <img class="center-img" src="./assets/3.1.jpg" width="70%"/>
-	<h5>
-          Comparison of mDDPM with state-of-the-art technieques.
+        <img class="center-img" src="./assets/4.jpg" width="70%"/>
+        <h5>
+          Qualitative comparison of our method with the IN2N over two separate
+          scenes, it becomes clear that 3DEgo stands out in its ability to precisely target the
+          relevant area, perform accurate textual modifications, and prevent unwanted changes.
+          These tasks are notably more difficult for the baseline approach to accomplish.
+          For instance, when the editing prompt requests "Give the wheels Blue Color and Make
+          the recyclebins brown," IN2N inadvertently alters the complete van color to blue
+          as well, instead of just changing the tire color. It must be noted that IN2N uses
+          poses from COLMAP, while 3DEgo estimates poses while constructing the 3D scene.
+          The Van scene, selected from our GS25 dataset, encompasses a 360-degree view and
+          includes objects with occlusions, such as recycling bins
         </h5>
       </div>
     </div>
@@ -153,9 +175,9 @@
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>@misc{iqbal2023unsupervised,https://github.com/orgs/community/discussions/54546
-  author    = {Hasan Iqbal and Umar Khalid and Jing Hua and Chen Chen},
-  title     = {Unsupervised Anomaly Detection in Medical Images Using Masked Diffusion Model},
-  year      = {2023},
+  author    = {Umar Khalid and Hasan Iqbal and Azib Farooq and Jing Hua and Chen Chen},
+  title     = {3DEgo: 3D Editing on the Go!},
+  year      = {2024},
   eprint    = {2305.198671},
   archivePrefix={arXiv}, 
   primaryClass={eess.IV}
