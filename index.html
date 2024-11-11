@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>3DEgo</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto Serif" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <!-- <script src="./static/js/bulma-slider.min.js"></script> -->
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero" >
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-3 publication-title">3DEgo: 3D Editing on the Go! 
+		</br>(ECCV2024 Accepted)
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="" target="_blank">Umar Khalid</a><sup>1*</sup></span>
+              <span class="author-block">
+                <a href="" target="_blank">Hasan Iqbal</a><sup>2*</sup>,</span>
+              <span class="author-block">
+                <a href="" target="_blank">Azib Farooq</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="" target="_blank">Jing Hua</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="" target="_blank">Chen Chen</a><sup>1</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>University of Centra Florida</span>
+              <span class="author-block"><sup>2</sup>Wayne State University</span>
+              <span class="author-block"><sup>3</sup>Miami University</span>
+            </div>
+		    
+            <div class="is-size-6 publication-authors">
+	      <span class="author-block"><sup>*</sup>Equal Contribution</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2407.10102" class="external-link button is-normal is-rounded is-dark"
+                    target="_blank">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://drive.google.com/drive/folders/1WwS0aVUJ5yaP3vuIPpJA_2pCGt2lhhpS?usp=sharing" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+				        </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" style="margin-top: -2em;">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce <strong>3DEgo</strong> to address a novel problem of directly synthesizing photorealistic 3D scenes from monocular videos guided by textual prompts. Conventional methods construct a text-conditioned 3D scene through a three-stage process, involving pose estimation using Structure-from-Motion (SfM) libraries like COLMAP, initializing the 3D model with unedited images, and iteratively updating the dataset with edited images to achieve a 3D scene with text fidelity. Our framework streamlines the conventional multi-stage 3D editing process into a single-stage workflow by overcoming the reliance on COLMAP and eliminating the cost of model initialization. We apply a diffusion model to edit video frames prior to 3D scene creation by incorporating our designed <i>noise blender module</i> for enhancing multi-view editing consistency, a step that does not require additional training or fine-tuning of T2I diffusion models.  <strong>3DEgo</strong> utilizes 3D Gaussian Splatting to create 3D scenes from the multi-view consistent edited frames, capitalizing on the inherent temporal continuity and explicit point cloud data. 3DEgo demonstrates remarkable editing precision, speed, and adaptability across a variety of video sources, as validated by extensive evaluations on six datasets, including our own prepared GS25 dataset. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-justified">
+        <img class="center-img" src="./assets/2.jpg" width="100%"/>
+        <h5>
+          3DEgo offers rapid, accurate, and adaptable 3D editing. It completes scene
+          creation in just 8-12 minutes, bypassing the need for original image initialization and
+          COLMAP poses. This ensures compatibility with videos from any source, including
+          casual smartphone captures like the Van 360-degree scene. The above results identify
+          three cases challenging for IN2N, where our method can convert a monocular video
+          into customized 3D scenes using a streamlined, single-stage reconstruction process
+        </h5>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-justified">
+        <img class="center-img" src="./assets/1.jpg" width="50%"/>
+        <h5>
+          Our method, 3DEgo, streamlines the 3D
+          editing process by merging a three-stage workflow
+          into a singular, comprehensive framework. This
+          efficiency is achieved by bypassing the need for
+          COLMAP for pose initialization and avoid-
+          ing the initialization of the model with unedited
+          images, unlike other existing approaches.
+        </h5>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-justified">
+        <img class="center-img" src="./assets/3.0.jpg" width="79%"/>
+        <img class="center-img" src="./assets/4.jpg" width="80%"/>
+        <h5 style="text-align: center;"> 
+	Qualitative comparison of our method with Instruct-NeRF2NeRF (IN2N) and Instruct-GS2GS (IG2G). 
+        </h5>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-justified">
+        <img class="center-img" src="./assets/4.jpg" width="70%"/>
+        <h5>
+          Qualitative comparison of our method with the IN2N over two separate
+          scenes, it becomes clear that 3DEgo stands out in its ability to precisely target the
+          relevant area, perform accurate textual modifications, and prevent unwanted changes.
+          These tasks are notably more difficult for the baseline approach to accomplish.
+          For instance, when the editing prompt requests "Give the wheels Blue Color and Make
+          the recyclebins brown," IN2N inadvertently alters the complete van color to blue
+          as well, instead of just changing the tire color. It must be noted that IN2N uses
+          poses from COLMAP, while 3DEgo estimates poses while constructing the 3D scene.
+          The Van scene, selected from our GS25 dataset, encompasses a 360-degree view and
+          includes objects with occlusions, such as recycling bins
+        </h5>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{khalid20243DEgo,
+  author    = {Umar Khalid and Hasan Iqbal and Azib Farooq and Jing Hua and Chen Chen},
+  title     = {3DEgo: 3D Editing on the Go!},
+  year      = {2024},
+  eprint    = {2407.10102},
+  archivePrefix={arXiv}, 
+  primaryClass={cs.CV}
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              Website template credit to <a href="https://video-p2p.github.io//">Video-P2P</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
